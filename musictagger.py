@@ -24,9 +24,9 @@ def main():
     if len(sys.argv) == 2:
         print("Current name: {}".format(os.path.basename(path)))
         new_dirname = input("    New name: ")
-        new_path = new_dirname
+        new_path = os.path.dirname(path) + "/" + new_dirname
     else:
-        new_path = sys.argv[2]
+        new_path = os.path.dirname(path) + "/" + sys.argv[2]
 
     try:
         os.rename(path, new_path)
