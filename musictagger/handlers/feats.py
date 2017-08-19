@@ -21,6 +21,7 @@ def check(filename):
     new_filename = check_bracketsf(new_filename)
     new_filename = check_featdot(new_filename)
     new_filename = check_feat(new_filename)
+    new_filename = check_upperfeatdot(new_filename)
 
     return new_filename
 
@@ -118,4 +119,14 @@ def check_feat(filename):
     if feat_match:
         print("Features listed inside Feat ..., changing to (feat. ...)")
         return regexhelper.format_feats(filename, feat_match, 6, -len(util.get_extension(filename)))
+    return filename
+
+
+# check for (Feat. <feat list>)
+def check_upperfeatdot(filename):
+    upperfeatdot_pattern = re.compile("(\(Feat\. (.*)\))")
+    upperfeatdot_match = upperfeatdot_pattern.search(filename)
+    if upperfeatdot_match:
+        print("Features listed inside (Feat. ...), changing to (feat. ...)")
+        return regexhelper.format_feats(filename, upperfeatdot_match, 7, -1)
     return filename
