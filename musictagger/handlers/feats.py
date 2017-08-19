@@ -15,6 +15,7 @@ def check(filename):
 
     new_filename = check_paranthesesfeat_nodot(new_filename)
     new_filename = check_fdot(new_filename)
+    new_filename = check_ftdot(new_filename)
     new_filename = check_bracketsdot(new_filename)
     new_filename = check_brackets(new_filename)
     new_filename = check_bracketsfdot(new_filename)
@@ -53,6 +54,16 @@ def check_fdot(filename):
     if fdot_match:
         print("Features listed inside (f. ...), changing to (feat. ...)")
         return regexhelper.format_feats(filename, fdot_match, 4, -1)
+    return filename
+
+
+# check for (ft. <feat list>) (ignoring case of ft.)
+def check_ftdot(filename):
+    ftdot_pattern = re.compile("(\([fF][tT]\. .*\))")
+    ftdot_match = ftdot_pattern.search(filename)
+    if ftdot_match:
+        print("Features listed inside (ft. ...), changing to (feat. ...)")
+        return regexhelper.format_feats(filename, ftdot_match, 5, -1)
     return filename
 
 
