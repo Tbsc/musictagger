@@ -49,7 +49,7 @@ def check_dot(filename):
 
 # check if filename uses a single space
 def check_space(filename):
-    space_pattern = re.compile("\d\d .*")
+    space_pattern = re.compile(r"\d\d [^-]+")
     if space_pattern.match(filename):
         print("No separator, inserting a dash")
         trackno = filename[0] + filename[1]
