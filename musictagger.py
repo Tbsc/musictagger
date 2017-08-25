@@ -6,6 +6,7 @@ from musictagger.handlers import feats
 from musictagger.handlers import numbering
 from musictagger.handlers import separator
 from musictagger.handlers import images
+from musictagger.handlers import etc
 
 
 def main():
@@ -57,6 +58,7 @@ def main():
             new_filename = numbering.check(new_filename)
             new_filename = separator.check(new_filename)
             new_filename = feats.check(new_filename)
+            new_filename = etc.check(new_filename)
         elif util.filecheck_image(filename):
             # if image file, work on it
             print("Image file")

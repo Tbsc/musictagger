@@ -8,10 +8,9 @@ def print_divider():
 
 # checks the file's extensions and returns true if it's .flac, .mp3, .jpg or .png.
 def should_handle_file(filename):
-    extension = get_extension(filename)
     return \
-        extension == ".flac" or extension == ".mp3" \
-        or extension == ".jpg" or extension == ".jpeg" or extension == ".png"
+        filecheck_music(filename) \
+        or filecheck_image(filename)
 
 
 # checks if the given file is a music file
@@ -23,7 +22,12 @@ def filecheck_music(filename):
 # checks if the given file is an image
 def filecheck_image(filename):
     extension = get_extension(filename)
-    return extension == ".jpg" or extension == ".png"
+    return extension == ".jpg" or extension == ".jpeg" or extension == ".png"
+
+
+def filecheck_playlist(filename):
+    extension = get_extension(filename)
+    return extension == ".m3u"
 
 
 def append_path(path, filename):
