@@ -8,7 +8,7 @@ def check(filename):
 
 
 def check_backquote(filename):
-    if "Â´" in filename:
+    if "â" in filename:
         print("Replaced invalid backquote character with quote character")
-        return filename.replace("Â´", "'")
+        return filename.replace("â", "'")
     return filename
